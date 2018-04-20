@@ -5,7 +5,7 @@ Language for convenient work with strings.
 
 ### Prerequisites
   - JDK 8
-  - CMAKE >= 3.10
+  - Cmake >= 3.10
   - bash
   
 ### Building Grammar
@@ -22,8 +22,6 @@ Implement methods in src/QwertyParserBaseVisitor.h, src/QwertyParserBaseVisitor.
 ### Running:
 ```sh
 
-$ cmake CMakeLists.txt
-$ make
 $ ./qwerty.sh <file>
 
 ```
