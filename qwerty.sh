@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-CMAKE="/home/mark/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/181.4445.84/bin/cmake/bin/cmake"
+CMAKE="cmake"
 GCC="g++"
 CPP_FLAGS="-Wall -pedantic -Werror -o2"
 

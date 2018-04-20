@@ -1,7 +1,7 @@
 #include "QwertyParserBaseVisitorImpl.h"
 
 antlrcpp::Any AntlrQwerty::QwertyParserBaseVisitorImpl::visitProgram(AntlrQwerty::QwertyParser::ProgramContext *ctx) {
-    return std::string("hello");
+    return QwertyParserBaseVisitor::visitProgram(ctx);
 }
 
 antlrcpp::Any
@@ -109,4 +109,16 @@ AntlrQwerty::QwertyParserBaseVisitorImpl::visitLogical_conj(AntlrQwerty::QwertyP
 antlrcpp::Any
 AntlrQwerty::QwertyParserBaseVisitorImpl::visitLogical_factor(AntlrQwerty::QwertyParser::Logical_factorContext *ctx) {
     return QwertyParserBaseVisitor::visitLogical_factor(ctx);
+}
+
+antlrcpp::Any AntlrQwerty::QwertyParserBaseVisitorImpl::visitType(AntlrQwerty::QwertyParser::TypeContext *ctx) {
+    return QwertyParserBaseVisitor::visitType(ctx);
+}
+
+antlrcpp::Any AntlrQwerty::QwertyParserBaseVisitorImpl::visitOperand(AntlrQwerty::QwertyParser::OperandContext *ctx) {
+    return QwertyParserBaseVisitor::visitOperand(ctx);
+}
+
+antlrcpp::Any AntlrQwerty::QwertyParserBaseVisitorImpl::visitName(AntlrQwerty::QwertyParser::NameContext *ctx) {
+    return QwertyParserBaseVisitor::visitName(ctx);
 }

@@ -33,6 +33,9 @@ namespace AntlrQwerty {
         antlrcpp::Any visitCondition(QwertyParser::ConditionContext *ctx) final;
         antlrcpp::Any visitLogical_conj(QwertyParser::Logical_conjContext *ctx) final;
         antlrcpp::Any visitLogical_factor(QwertyParser::Logical_factorContext *ctx) final;
+        antlrcpp::Any visitType(QwertyParser::TypeContext *ctx) final;
+        antlrcpp::Any visitOperand(QwertyParser::OperandContext *ctx) final;
+        antlrcpp::Any visitName(QwertyParser::NameContext *ctx) final;
     };
 }
 
