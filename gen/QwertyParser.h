@@ -76,6 +76,8 @@ public:
     virtual size_t getRuleIndex() const override;
     std::vector<ExpressionContext *> expression();
     ExpressionContext* expression(size_t i);
+    std::vector<FunctionContext *> function();
+    FunctionContext* function(size_t i);
     std::vector<antlr4::tree::TerminalNode *> OPERATOR_DEL();
     antlr4::tree::TerminalNode* OPERATOR_DEL(size_t i);
 
@@ -89,7 +91,6 @@ public:
   public:
     ExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    FunctionContext *function();
     InstructionContext *instruction();
     OperationContext *operation();
 

@@ -5,11 +5,11 @@ options {
 }
 
 program
-    : OPERATOR_DEL* ( expression OPERATOR_DEL )* expression OPERATOR_DEL*
+    : OPERATOR_DEL* ( ( expression | function ) OPERATOR_DEL )* ( expression | function ) OPERATOR_DEL*
     |;
 
 expression
-    : function | instruction | operation
+    : instruction | operation
     ;
 
 function
