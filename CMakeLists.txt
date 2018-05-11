@@ -2,10 +2,10 @@ if (NOT UNIX)
     message(WARNING "Unsupported operating system")
 endif ()
 
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.5.2)
 project(qwerty_lang)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 14)
 
 include_directories(
         ${PROJECT_SOURCE_DIR}/lib/antlr4-runtime
@@ -26,9 +26,9 @@ set(antlr4-qwerty_GENERATED_SRC
 set(antlr4-qwerty_SRC
         src/main.cpp
         ${antlr4-qwerty_GENERATED_SRC}
-        src/QwertyParserBaseVisitorImpl.cpp src/QwertyParserBaseVisitorImpl.h)
+        src/QwertyParserBaseVisitorImpl.cpp src/QwertyParserBaseVisitorImpl.h src/QwertySyntaxException.h src/PairSet.h)
 
-set(CMAKE_CPP_FLAGS "-Wall -pedantic -Werror -o2")
+set(CMAKE_CPP_FLAGS "-std=c++14 -Wall -pedantic -Werror -o2")
 add_executable(qwerty_lang ${antlr4-qwerty_SRC})
 
 target_link_libraries(qwerty_lang ${PROJECT_SOURCE_DIR}/lib/libantlr4-runtime.a)

@@ -13,7 +13,7 @@ expression
     ;
 
 function
-    : FUNC name OPEN_PARANTHESIS param_def CLOSE_PARANTHESIS BEGIN operators END
+    : FUNC name OPEN_PARANTHESIS param_def CLOSE_PARANTHESIS (RET_TYPE type)? BEGIN operators END
     ;
 
 param_def
@@ -21,7 +21,7 @@ param_def
     ;
 
 operators
-    : ( ( instruction | operation ) OPERATOR_DEL )* ( instruction | operation )?
+    : ( expression OPERATOR_DEL )* expression?
     ;
 
 instruction
@@ -29,13 +29,21 @@ instruction
     | for_instruction
     | while_instruction
     | definition_instruction
-    | assign_instructions
+    | assign_instruction
     | print
     | return_instruction
     ;
 
 if_instruction
-    : IF condition BEGIN operators ( ELSE BEGIN operators )? END
+    : IF condition BEGIN then_block ( ELSE BEGIN else_block )? END
+    ;
+
+then_block
+    : operators
+    ;
+
+else_block
+    : operators
     ;
 
 for_instruction
@@ -50,14 +58,8 @@ definition_instruction
     : type name (ASSIGN operation)?
     ;
 
-assign_instructions
-    : get_object ASSIGN operation
-    | get_object MULT_ASSIGN operation
-    | get_object SUM_ASSIGN operation
-    ;
-
-get_object
-    : name | get_slice | get_item
+assign_instruction
+    : (name | get_slice | get_item ) ASSIGN  operation
     ;
 
 print
@@ -73,11 +75,8 @@ operation
     | get_item
     | get_slice
     | operation SUM operation
-    | operation MULT operation
     | operation IN operation
     | operation EQ operation
-    | operation LESS operation
-    | operation GREATER operation
     | len_function
     | operand
     ;
@@ -87,11 +86,19 @@ function_call
     ;
 
 get_item
-    : operand OPEN_SQUARE_BRACKET operation CLOSE_SQUARE_BRACKET
+    : operand OPEN_SQUARE_BRACKET item_index1 CLOSE_SQUARE_BRACKET
     ;
 
 get_slice
-    : operand OPEN_SQUARE_BRACKET operation? SEP operation? CLOSE_SQUARE_BRACKET
+    : operand OPEN_SQUARE_BRACKET item_index1 SEP_SLICE item_index2 CLOSE_SQUARE_BRACKET
+    ;
+
+item_index1
+    : operand
+    ;
+
+item_index2
+    : operand
     ;
 
 param_list
@@ -113,17 +120,33 @@ logical_conj
    ;
 
 logical_factor
-   : ( NOT )? ( OPEN_PARANTHESIS condition CLOSE_PARANTHESIS | operation )
+   : ( negation )? ( OPEN_PARANTHESIS condition CLOSE_PARANTHESIS | operation )
+   ;
+
+negation
+   : NOT
    ;
 
 type
-    : BOOL | INT | STR | LIST
+    : BOOL | INT | STR | list
+    ;
+
+list
+    : LIST OPEN_TRIANGLE_BRACKET type CLOSE_TRIANGLE_BRACKET
     ;
 
 operand
-    : name | IDENT
+    : name | ident | array
     ;
 
 name
     : NAME
+    ;
+
+ident
+    : STRING | NUMBER | BOOLEAN
+    ;
+
+array
+    : OPEN_SQUARE_BRACKET (operand (COMMA operand)*)? CLOSE_SQUARE_BRACKET
     ;

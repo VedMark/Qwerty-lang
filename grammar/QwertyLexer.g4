@@ -48,27 +48,18 @@ SUM: '+';
 
 MULT: '*';
 
-SUM_ASSIGN: '+=';
-
-MULT_ASSIGN: '*=';
-
 ASSIGN: '=';
 
 NAME
     : NONDIGIT ( DIGIT | NONDIGIT )*
     ;
 
-IDENT
-    : STRING | NUMBER | BOOLEAN
-    ;
-
 STRING
-    : '\'' ( S_CHAR | S_ESCAPE )* '\''
-    | '"' ( D_CHAR | D_ESCAPE )* '"'
+    : '"' ( D_CHAR | D_ESCAPE )* '"'
     ;
 
 NUMBER
-    : '-'? NON_ZERO_DIGIT ( DIGIT )*
+    : '-'? NON_ZERO_DIGIT ( DIGIT )* | ZERO
     ;
 
 BOOLEAN
@@ -95,12 +86,24 @@ CLOSE_SQUARE_BRACKET
     : ']'
     ;
 
+OPEN_TRIANGLE_BRACKET
+    : '<'
+    ;
+
+CLOSE_TRIANGLE_BRACKET
+    : '>'
+    ;
+
+SEP_SLICE
+    : ':'
+    ;
+
 BEGIN
     : ':' [\r\n]*
     ;
 
-SEP
-    : ':'
+RET_TYPE
+    : '->'
     ;
 
 OPERATOR_DEL
@@ -138,11 +141,15 @@ fragment ESCAPE
     ;
 
 DIGIT
-    : '0' | NON_ZERO_DIGIT
+    : ZERO | NON_ZERO_DIGIT
     ;
 
 fragment NON_ZERO_DIGIT
     : '1' .. '9'
+    ;
+
+fragment ZERO
+    : '0'
     ;
 
 COMMENT

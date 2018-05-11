@@ -45,6 +45,14 @@ public:
     return visitChildren(ctx);
   }
 
+  virtual antlrcpp::Any visitThen_block(QwertyParser::Then_blockContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitElse_block(QwertyParser::Else_blockContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
   virtual antlrcpp::Any visitFor_instruction(QwertyParser::For_instructionContext *ctx) override {
     return visitChildren(ctx);
   }
@@ -57,11 +65,7 @@ public:
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitAssign_instructions(QwertyParser::Assign_instructionsContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual antlrcpp::Any visitGet_object(QwertyParser::Get_objectContext *ctx) override {
+  virtual antlrcpp::Any visitAssign_instruction(QwertyParser::Assign_instructionContext *ctx) override {
     return visitChildren(ctx);
   }
 
@@ -89,6 +93,14 @@ public:
     return visitChildren(ctx);
   }
 
+  virtual antlrcpp::Any visitItem_index1(QwertyParser::Item_index1Context *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitItem_index2(QwertyParser::Item_index2Context *ctx) override {
+    return visitChildren(ctx);
+  }
+
   virtual antlrcpp::Any visitParam_list(QwertyParser::Param_listContext *ctx) override {
     return visitChildren(ctx);
   }
@@ -109,7 +121,15 @@ public:
     return visitChildren(ctx);
   }
 
+  virtual antlrcpp::Any visitNegation(QwertyParser::NegationContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
   virtual antlrcpp::Any visitType(QwertyParser::TypeContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitList(QwertyParser::ListContext *ctx) override {
     return visitChildren(ctx);
   }
 
@@ -118,6 +138,14 @@ public:
   }
 
   virtual antlrcpp::Any visitName(QwertyParser::NameContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitIdent(QwertyParser::IdentContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitArray(QwertyParser::ArrayContext *ctx) override {
     return visitChildren(ctx);
   }
 

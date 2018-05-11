@@ -1,0 +1,6 @@
+str x
+x = "abcd"
+x["ab"] = "XXX" // -> XXXcd
+x[1] = "YYY" // -> XYYYXXcd
+x[2:4] = "ZZZ" // -> XYZZZXXcd
+print x, "\n"
